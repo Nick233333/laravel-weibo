@@ -64,52 +64,19 @@ p {
   color: #fff;
   text-decoration: none;
   letter-spacing: -1px;
-  padding-top: 9px;
+  padding-top: 15px;
   font-weight: bold;
   &:hover {
     color: #fff;
   }
 }
 
-/* footer */
 
-footer {
-  margin-top: 45px;
-  padding-top: 5px;
-  border-top: 1px solid #eaeaea;
-  color: #777;
-
-  a {
-    color: #555;
+@media  (min-width: 800px) {
+  .navbar-nav {
+    float: right !important;
   }
 
-  a:hover {
-    color: #222;
-  }
-
-  small {
-    float: left;
-  }
-
-  ul {
-    float: right;
-    list-style: none;
-
-    li {
-      float: left;
-      margin-left: 15px;
-    }
-  }
-
-  img.brand-icon {
-    width: 17px;
-    height: 17px;
-  }
-
-  .slogon {
-    font-size: 13px;
-    font-weight: bold;
-  }
 }
 
 /* sidebar */
