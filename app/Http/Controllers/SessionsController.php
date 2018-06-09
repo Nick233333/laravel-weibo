@@ -25,9 +25,7 @@ class SessionsController extends Controller
             return redirect()->route('users.show', [Auth::user()]);
         } else {
             session()->flash('danger', '邮箱或密码不匹配');
-            session()->flash('email', $request->email);
-            session()->flash('password', $request->password);
-            return redirect()->back();
+            return redirect('/login')->withInput();
         }
     }
 
