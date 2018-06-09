@@ -8427,8 +8427,13 @@ p {
   }
 }
 
+.nav > li {
+  margin-left: 20px;
+}
+
 #logout {
   cursor: default;
+  margin-right: 2rem;
 }
 
 #logout:hover {
