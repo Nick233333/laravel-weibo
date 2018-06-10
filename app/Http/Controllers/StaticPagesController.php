@@ -10,6 +10,9 @@ use Auth;
 
 class StaticPagesController extends Controller
 {
+    /**
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function home()
     {
         $feed_items = [];
@@ -20,11 +23,17 @@ class StaticPagesController extends Controller
         return view('static_pages/home', compact('feed_items'));
     }
 
+    /**
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function help()
     {
         return view('static_pages/help');
     }
 
+    /**
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function about()
     {
         return view('static_pages/about');

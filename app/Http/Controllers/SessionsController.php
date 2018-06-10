@@ -8,6 +8,9 @@ use Auth;
 
 class SessionsController extends Controller
 {
+    /**
+     * SessionsController constructor.
+     */
     public function __construct()
     {
         $this->middleware('guest', [
@@ -15,11 +18,18 @@ class SessionsController extends Controller
         ]);
     }
 
+    /**
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function create()
     {
         return view('sessions.create');
     }
 
+    /**
+     * @param Request $request
+     * @return $this|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     */
     public function store(Request $request)
     {
         $credentials = $this->validate($request, [
@@ -42,6 +52,9 @@ class SessionsController extends Controller
         }
     }
 
+    /**
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     */
     public function destroy()
     {
         Auth::logout();
