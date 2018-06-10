@@ -159,7 +159,7 @@ input {
 
 .users {
   list-style: none;
-  margin: 0;
+  margin-top: 35px;
   padding-left: 0;
   li {
     overflow: auto;
@@ -215,6 +215,7 @@ aside {
 .stats {
   overflow: auto;
   margin-top: 0;
+  margin-bottom: 25px;
   padding: 0;
   a {
     float: left;
@@ -257,7 +258,6 @@ aside {
 /* forms */
 
 #follow_form button {
-  margin: 0 auto;
   display: block;
-  margin-top: 25px;
+  margin-bottom: 35px;
 }

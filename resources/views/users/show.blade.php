@@ -22,7 +22,7 @@
                     @foreach ($statuses as $status)
                         @include('statuses._status')
                     @endforeach
-                    {!! $statuses->render() !!}
+                    <div class="pull-right">{!! $statuses->render() !!}</div>
                 @endif
             </div>
         </div>

@@ -12,7 +12,6 @@
                 </li>
             @endforeach
         </ul>
-
-        {!! $users->render() !!}
+        <div class="pull-right">{!! $users->render() !!}</div>
     </div>
 @stop
