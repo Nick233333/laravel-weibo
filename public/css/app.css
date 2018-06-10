@@ -8563,23 +8563,6 @@ input {
   padding: 5px 0;
 }
 
-.statuses .timestamp {
-  color: #777777;
-  display: block;
-  margin-left: 60px;
-}
-
-.statuses .gravatar {
-  margin-right: 10px;
-  margin-top: 5px;
-}
-
-.statuses form button.status-delete-btn {
-  position: absolute;
-  right: 0;
-  top: 10px;
-}
-
 aside textarea {
   height: 100px;
   margin-bottom: 5px;

@@ -42,7 +42,7 @@ class StatusesController extends Controller
     {
         $this->authorize('destroy', $status);
         $status->delete();
-        session()->flash('success', '微博已被成功删除！');
+        session()->flash('success', '删除成功！');
         return redirect()->back();
     }
 }
