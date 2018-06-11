@@ -26,9 +26,9 @@ class StaticPagesController extends Controller
     /**
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function help()
+    public function project()
     {
-        return view('static_pages/help');
+        return view('static_pages/project');
     }
 
     /**
