@@ -12,7 +12,7 @@
 */
 
 Route::get('/', 'StaticPagesController@home')->name('home');
-Route::get('/help', 'StaticPagesController@help')->name('help');
+Route::get('/project', 'StaticPagesController@project')->name('project');
 Route::get('/about', 'StaticPagesController@about')->name('about');
 
 Route::get('signup', 'UsersController@create')->name('signup');
@@ -31,7 +31,7 @@ Route::post('password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail'
 Route::get('password/reset/{token}', 'Auth\ResetPasswordController@showResetForm')->name('password.reset');
 Route::post('password/reset', 'Auth\ResetPasswordController@reset')->name('password.update');
 
-Route::resource('statuses', 'StatusesController', ['only' => ['store', 'destroy']])->middleware('throttle:5,1');
+Route::resource('statuses', 'StatusesController', ['only' => ['store', 'destroy']])->middleware('throttle:30,1');
 
 Route::get('/users/{user}/followings', 'UsersController@followings')->name('users.followings');
 Route::get('/users/{user}/followers', 'UsersController@followers')->name('users.followers');

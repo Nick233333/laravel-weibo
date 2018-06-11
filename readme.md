@@ -6,7 +6,9 @@
 php7+
 nginx1.10+
 mysql5.7+
-redis3.0+
+redis4.0+
+node10+
+composer
 ```
 
 部署执行以下命令
@@ -19,4 +21,5 @@ sudo composer install
 sudo cnpm install
 sudo npm run dev
 sudo php artisan key:generate
+php artisan migrate
  ```   
