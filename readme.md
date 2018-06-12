@@ -19,7 +19,7 @@ sudo chmod -R 777 storage
 sudo cp .env.example .env
 sudo composer install
 sudo cnpm install
-sudo npm run dev
+sudo npm run production
 sudo php artisan key:generate
 php artisan migrate
  ```   
