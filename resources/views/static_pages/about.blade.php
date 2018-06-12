@@ -22,5 +22,6 @@
         <li class="list-group-item">关注与取消关注</li>
         <li class="list-group-item">粉丝关系</li>
         <li class="list-group-item">发布次数限制与分页</li>
+        <li class="list-group-item">分享社交功能</li>
     </ul>
 @stop

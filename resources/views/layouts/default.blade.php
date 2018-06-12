@@ -12,6 +12,7 @@
     <meta name="author" content="Nick">
     <meta name="Keywords" content="php,laravel,vue,js,mysql,css,html5" />
     <meta name="Description" content="php,laravel,vue,js,mysql,css,html5信息。" />
+    @yield('css')
 </head>
 <body>
     @include('layouts._header')
@@ -23,5 +24,6 @@
         </div>
     </div>
     <script src="{{ mix('/js/app.js') }}"></script>
+    @yield('js')
 </body>
 </html>
