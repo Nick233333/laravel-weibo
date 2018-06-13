@@ -74,6 +74,7 @@ p {
 @media  (min-width: 800px) {
   .navbar-nav {
     float: right !important;
+    margin: 0;
   }
 
 }
@@ -88,6 +89,12 @@ p {
   &:hover {
     background-color: transparent;
   }
+}
+.btn-logout {
+  width: 100%;
+}
+.dropdown-menu > li {
+  margin: 10px 0;
 }
   /* sidebar */
 aside {
