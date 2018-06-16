@@ -16,7 +16,8 @@ use Faker\Generator as Faker;
 $factory->define(App\Models\User::class, function (Faker $faker) {
     $date_time = $faker->date . ' ' . $faker->time;
     static $password;
-
+    $data = Ramsey\Uuid\Uuid::uuid1(time());
+    $str = $data->getHex();    //32位字符串方法
     return [
             'name' => $faker->name,
             'email' => $faker->safeEmail,
@@ -26,5 +27,6 @@ $factory->define(App\Models\User::class, function (Faker $faker) {
             'remember_token' => str_random(10),
             'created_at' => $date_time,
             'updated_at' => $date_time,
+            'uuid' => $str
     ];
 });

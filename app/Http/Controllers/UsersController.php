@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Models\User;
 use Auth;
+use Ramsey\Uuid\Uuid;
 
 class UsersController extends Controller
 {
@@ -62,11 +63,14 @@ class UsersController extends Controller
                 'email' => 'required|email|unique:users|max:255',
                 'password' => 'required|confirmed|min:6'
         ]);
+        $data = Uuid::uuid1(time());
+        $str = $data->getHex();    //32位字符串方法
 
         $user = User::create([
                 'name' => $request->name,
                 'email' => $request->email,
                 'password' => bcrypt($request->password),
+                'uuid' => $str,
         ]);
         $this->sendEmailConfirmationTo($user);
         session()->flash('success', '验证邮件已发送到你的注册邮箱上，请注意查收。');
