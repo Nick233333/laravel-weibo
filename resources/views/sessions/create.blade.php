@@ -37,3 +37,8 @@
         </div>
     </div>
 @stop
+@section('js')
+    <script>
+        $('#loginMessage').remove();
+    </script>
+@endsection

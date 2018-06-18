@@ -18,12 +18,31 @@
     @include('layouts._header')
     <div class="container">
         <div class="col-md-offset-1 col-md-10">
+            <div id="loginMessage" class="alert alert-success alert-dismissible hidden" role="alert">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <p id="message"></p>
+            </div>
             @include('shared._messages')
             @yield('content')
             @include('layouts._footer')
         </div>
     </div>
+
     <script src="{{ mix('/js/app.js') }}"></script>
+    <script>
+
+        if ('EventSource' in window) {
+            var source = new EventSource('{{ route('sse') }}');
+            source.onmessage = function (event) {
+                if (event.data !== '{{ Auth::user()->name ?? ''}}') {
+
+                    $('#loginMessage').removeClass('hidden');
+                    $('#message').text('欢迎 ' + event.data + ' 登录系统！');
+                }
+            };
+        }
+
+    </script>
     @yield('js')
 </body>
 </html>
