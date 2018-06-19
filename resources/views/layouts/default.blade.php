@@ -31,7 +31,7 @@
     <script src="{{ mix('/js/app.js') }}"></script>
     <script src='//cdn.bootcss.com/socket.io/1.3.7/socket.io.js'></script>
     <script>
-        var socket = io('http://127.0.0.1:2000');
+        var socket = io('{{ config('websocket.socket_url') }}');
         var is_login = '{{ session()->has('login') }}';
         var user = '{{ Auth::user()->name ?? ''}}';
         if (is_login) {
