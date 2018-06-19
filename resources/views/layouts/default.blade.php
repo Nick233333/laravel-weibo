@@ -29,7 +29,23 @@
     </div>
 
     <script src="{{ mix('/js/app.js') }}"></script>
+    <script src='//cdn.bootcss.com/socket.io/1.3.7/socket.io.js'></script>
+    <script>
+        var socket = io('http://127.0.0.1:200');
+        var is_login = '{{ session()->has('login') }}';
+        var user = '{{ Auth::user()->name ?? ''}}';
+        if (is_login) {
+            // 触发服务端的 login 事件
+            socket.emit('login', user);
+        }
 
+        socket.on('message', function(msg){
+            if (msg !== user) {
+                $('#message').text('欢迎 '+ msg +' 登录系统！');
+                $('#loginMessage').removeClass('hidden');
+            }
+        });
+    </script>
     @yield('js')
 </body>
 </html>
