@@ -29,20 +29,7 @@
     </div>
 
     <script src="{{ mix('/js/app.js') }}"></script>
-    <script>
 
-        if ('EventSource' in window) {
-            var source = new EventSource('{{ route('sse') }}');
-            source.onmessage = function (event) {
-                if (event.data !== '{{ Auth::user()->name ?? ''}}') {
-
-                    $('#loginMessage').removeClass('hidden');
-                    $('#message').text('欢迎 ' + event.data + ' 登录系统！');
-                }
-            };
-        }
-
-    </script>
     @yield('js')
 </body>
 </html>

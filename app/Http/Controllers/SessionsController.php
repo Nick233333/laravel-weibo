@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use Auth;
-use Illuminate\Support\Facades\Redis;
 
 class SessionsController extends Controller
 {
@@ -40,7 +39,6 @@ class SessionsController extends Controller
 
         if (Auth::attempt($credentials, $request->has('remember'))) {
             if(Auth::user()->activated) {
-                Redis::set('login', Auth::user()->name);
                 return redirect()->intended(route('users.show', [Auth::user()]));
             } else {
                 Auth::logout();
@@ -63,15 +61,4 @@ class SessionsController extends Controller
         return redirect('login');
     }
 
-    public function sse()
-    {
-        header('Content-Type: text/event-stream');
-        header('Cache-Control: no-cache');
-        $user = Redis::get('login');
-        if ($user) {
-            echo "data:".$user . "\n\n";
-            Redis::set('login', null);
-        }
-        flush();
-    }
 }
