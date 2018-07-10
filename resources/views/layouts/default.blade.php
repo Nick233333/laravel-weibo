@@ -18,7 +18,7 @@
     @include('layouts._header')
     <div class="container">
         <div class="col-md-offset-1 col-md-10">
-            <div id="loginMessage" class="alert alert-success alert-dismissible hidden" role="alert">
+            <div id="loginMessage" class="alert alert-success alert-dismissible hidden alert-msg" role="alert">
                 <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                 <p id="message"></p>
             </div>
@@ -32,13 +32,15 @@
     <script src='//cdn.bootcss.com/socket.io/1.3.7/socket.io.js'></script>
     <script>
         $(function() {
-            var alertMsg = ('#alertMsg');
-            if (alertMsg) {
+            cloneBox();
+        });
+        function cloneBox() {
+            if ($('.alert-msg')) {
                 setTimeout(function() {
-                    $(alertMsg).fadeOut();
+                    $('.alert-msg').fadeOut();
                 }, 3000);
             }
-        });
+        }
         function isPhone() {
 
             var ua = navigator.userAgent;
@@ -67,7 +69,7 @@
 
                     $('#message').text('欢迎 ' + loginUser + ' 登录系统！');
                     $('#loginMessage').removeClass('hidden');
-
+                    cloneBox();
                 } else {
 
                     new Notification("系统消息：）", {
