@@ -31,6 +31,28 @@
     <script src="{{ mix('/js/app.js') }}"></script>
     <script src='//cdn.bootcss.com/socket.io/1.3.7/socket.io.js'></script>
     <script>
+        $(function() {
+            var alertMsg = ('#alertMsg');
+            if (alertMsg) {
+                setTimeout(function() {
+                    $(alertMsg).fadeOut();
+                }, 3000);
+            }
+        });
+        function isPhone() {
+
+            var ua = navigator.userAgent;
+            var ipad = ua.match(/(iPad).*OS\s([\d_]+)/);
+            var isIphone = !ipad && ua.match(/(iPhone\sOS)\s([\d_]+)/);
+            var isAndroid = ua.match(/(Android)\s+([\d.]+)/);
+            var isMobile = isIphone || isAndroid;
+            if (isMobile) {
+                return 1;
+            } else  {
+                return;
+            }
+        }
+
         var socket = io('{{ config('websocket.socket_url') }}');
         var is_login = '{{ session()->has('login') }}';
         var user = '{{ Auth::user()->name ?? ''}}';
@@ -39,12 +61,25 @@
             socket.emit('login', user);
         }
 
-        socket.on('message', function(msg){
-            if (msg !== user) {
-                $('#message').text('欢迎 '+ msg +' 登录系统！');
-                $('#loginMessage').removeClass('hidden');
+        socket.on('message', function(loginUser) {
+            if (loginUser !== user) {
+                if (isPhone()) {
+
+                    $('#message').text('欢迎 ' + loginUser + ' 登录系统！');
+                    $('#loginMessage').removeClass('hidden');
+
+                } else {
+
+                    new Notification("系统消息：）", {
+                        body: '欢迎 ' + loginUser + ' 登录系统！',
+                        icon: '{{ asset('favicon.png') }}'
+                    });
+
+                }
             }
         });
+
+
     </script>
     @yield('js')
 </body>
