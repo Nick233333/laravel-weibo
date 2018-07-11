@@ -62,7 +62,12 @@
             // 触发服务端的 login 事件
             socket.emit('login', user);
         }
-
+        function popNotice(loginUser) {
+            new Notification("系统消息：）", {
+                body: '欢迎 ' + loginUser + ' 登录系统！',
+                icon: '{{ asset('favicon.png') }}'
+            });
+        }
         socket.on('message', function(loginUser) {
             if (loginUser !== user) {
                 if (isPhone()) {
@@ -72,11 +77,17 @@
                     cloneBox();
                 } else {
 
-                    new Notification("系统消息：）", {
-                        body: '欢迎 ' + loginUser + ' 登录系统！',
-                        icon: '{{ asset('favicon.png') }}'
-                    });
+                    if (Notification.permission == "granted") {
 
+                        popNotice(loginUser);
+
+                    } else if (Notification.permission != "denied") {
+                        Notification.requestPermission(function (permission) {
+                            popNotice(loginUser);
+                        });
+
+
+                    }
                 }
             }
         });
