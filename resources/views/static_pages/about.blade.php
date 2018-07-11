@@ -23,5 +23,7 @@
         <li class="list-group-item">粉丝关系</li>
         <li class="list-group-item">发布次数限制与分页</li>
         <li class="list-group-item">分享社交功能</li>
+        <li class="list-group-item">WebSocket 登录提示</li>
+        <li class="list-group-item">浏览器 Notification API </li>
     </ul>
 @stop
